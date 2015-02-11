@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+
+/**
+ * Dependencies.
+ */
+
+var app = module.exports = require('../server.js');
+var program = require('commander');
+
+/**
+ * CLI.
+ */
+
+program
+  .option('-p, --port <number>', 'port to listen on', app.port)
+  .parse(process.argv);
+
+/**
+ * Configuration.
+ */
+
+app.port = program.port;
+
+/**
+ * Start.
+ */
+
+if (!module.parent) app.start();
