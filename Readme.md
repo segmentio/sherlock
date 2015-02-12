@@ -5,21 +5,4 @@ Detect which integrations a website is using and find their API keys.
 
 ## Usage
 
-Make requests to `detective.segment.com/?url=<url>`
-
-Example response:
-
-```json
-{
-  "integrations": [
-    {
-      "name": "Google Analytics",
-      "key": "UA-5484921-8"
-    },
-    {
-      "name": "Mixpanel",
-      "key": "89f86c4aa2ce5b74cb47eb5ec95ad1f9"
-    }
-  ]
-}
-```
+![Usage](http://cl.ly/image/3u2f3w2x3E3E/Screen%20Shot%202015-02-11%20at%2011.03.24%20PM.png)
