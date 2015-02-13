@@ -5,7 +5,7 @@
  * Dependencies.
  */
 
-var app = module.exports = require('../server.js');
+var app = module.exports = require('..');
 var program = require('commander');
 
 /**
@@ -21,6 +21,21 @@ program
  */
 
 app.port = program.port;
+
+/**
+ * Configuration.
+ */
+
+app.name = 'Analytics Detective';
+app.port = process.env.PORT || 8001;
+app.start = function (port) {
+  var name = this.name;
+  port = port || this.port;
+
+  this.listen(port, function () {
+    console.log('\n  %s listening at http://localhost:%d/\n', name, port);
+  });
+};
 
 /**
  * Start.
