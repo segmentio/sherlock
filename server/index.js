@@ -3,11 +3,12 @@
  * Dependencies.
  */
 
-var detective  = require('./lib/detective');
+var detective  = require('../lib/detective');
 var bodyParser = require('koa-body-parser');
 var favicon    = require('koa-favicon');
 var koaLogger  = require('koa-logger');
 var json       = require('koa-json');
+var stats      = require('./middleware/stats');
 var koa        = require('koa');
 
 /**
@@ -17,25 +18,16 @@ var koa        = require('koa');
 var app = module.exports = koa();
 
 /**
- * Configuration.
- */
-
-app.name = 'Analytics Detective';
-app.port = process.env.PORT || 8001;
-app.start = function (port) {
-  var name = this.name;
-  port = port || this.port;
-
-  this.listen(port, function () {
-    console.log('\n  %s listening at http://localhost:%d/\n', name, port);
-  });
-};
-
-/**
  * Favicon catcher.
  */
 
 app.use(favicon());
+
+/**
+ * Stats.
+ */
+
+app.use(stats({ path: '/ping' }));
 
 /**
  * Logging.
