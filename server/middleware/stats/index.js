@@ -13,7 +13,7 @@ var os = require('os');
 
 module.exports = function(opts){
   opts = opts || {};
-  var path = opts.path || '/ping';
+  var path = opts.path || '/stats';
 
   return function *stats(next){
     if (path !== this.path) return yield next;
