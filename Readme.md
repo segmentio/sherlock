@@ -1,3 +1,4 @@
+[![Build Status](https://circleci.com/gh/segmentio/analytics-detective.png?circle-token=549661cd6c45d67690129d9737a0402f31cb1657)](https://circleci.com/gh/segmentio/analytics-detective)
 
 # analytics-detective
 
