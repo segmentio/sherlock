@@ -16,15 +16,17 @@ MOCHA := $(BIN)/mocha
 # Server.
 #
 
-server: | node_modules
+server: node_modules
 	@$(NODE) ./bin/server
 
 #
 # Test.
 #
 
-test:
+test: node_modules
+	@pkill phantomjs &
 	@$(MOCHA) --harmony ./test
+	@pkill phantomjs &
 
 #
 # Clean.
