@@ -24,12 +24,6 @@ var app = module.exports = koa();
 app.use(favicon());
 
 /**
- * Stats.
- */
-
-app.use(stats({ path: '/ping' }));
-
-/**
  * Logging.
  */
 
@@ -46,6 +40,12 @@ app.use(bodyParser());
  */
 
 app.use(json({ pretty: true }));
+
+/**
+ * Stats.
+ */
+
+app.use(stats());
 
 /**
  * URL required.
