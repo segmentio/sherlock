@@ -4,7 +4,7 @@
   "repository": "git://github.com/segmentio/analytics-detective.git",
   "version": "0.0.1",
   "license": "MIT",
-  "main": "server.js",
+  "main": "server/index.js",
   "dependencies": {
     "commander": "^2.6.0",
     "koa": "^0.17.0",
