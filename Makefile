@@ -6,11 +6,25 @@
 NODE ?= n use 0.11.13 --harmony-generators
 
 #
+# Binaries.
+#
+
+BIN := ./node_modules/.bin
+MOCHA := $(BIN)/mocha
+
+#
 # Server.
 #
 
 server: | node_modules
 	@$(NODE) ./bin/server
+
+#
+# Test.
+#
+
+test:
+	@$(MOCHA) --harmony ./test
 
 #
 # Clean.
@@ -30,5 +44,6 @@ node_modules: package.json
 # Phonies.
 #
 
+.PHONY: test
 .PHONY: server
 .PHONY: clean
