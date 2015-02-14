@@ -31,6 +31,14 @@ describe('detective.analyze(url)', function () {
       detected(results, 'Google Analytics', { trackingId: 'UA-XXXX-Y' })
     });
   });
+  describe('Mixpanel', function () {
+    it('should detect script', function *() {
+      var url = fixture('mixpanel/index.html');
+      var results = yield detective.analyze(url);
+
+      detected(results, 'Mixpanel', { token: 'YOUR TOKEN' })
+    });
+  });
 });
 
 function fixture(file) {
