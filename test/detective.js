@@ -4,16 +4,9 @@
  */
 
 var detective = require('../lib/detective');
-var thunkify = require('thunkify');
 var server = require('./server');
 var assert = require('assert');
 var path = require('path');
-
-/**
- * Thunkify
- */
-
-detective.analyze = thunkify(detective.analyze.bind(detective));
 
 /**
  * Detective.
