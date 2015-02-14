@@ -39,6 +39,14 @@ describe('detective.analyze(url)', function () {
       detected(results, 'Mixpanel', { token: 'YOUR TOKEN' })
     });
   });
+  describe('FullStory', function () {
+    it('should detect script', function *() {
+      var url = fixture('fullstory/index.html');
+      var results = yield detective.analyze(url);
+
+      detected(results, 'FullStory', { fsOrg: '<FS_ORG>' })
+    });
+  });
 });
 
 function fixture(file) {
