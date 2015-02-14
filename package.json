@@ -11,6 +11,7 @@
     "koa-favicon": "^1.2.0",
     "koa-json": "^1.1.1",
     "koa-logger": "^1.2.2",
+    "koa-static": "^1.4.9",
     "nightmare": "^1.7.0",
     "thunkify": "^2.1.2"
   },
