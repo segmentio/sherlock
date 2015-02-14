@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-
 /**
  * Dependencies.
  */
@@ -13,32 +12,20 @@ var program = require('commander');
  */
 
 program
-  .option('-p, --port <number>', 'port to listen on', app.port)
+  .option('-p, --port <number>', 'port to listen on', 8001)
   .parse(process.argv);
 
 /**
  * Configuration.
  */
 
-app.port = program.port;
-
-/**
- * Configuration.
- */
-
 app.name = 'Analytics Detective';
-app.port = process.env.PORT || 8001;
-app.start = function (port) {
-  var name = this.name;
-  port = port || this.port;
-
-  this.listen(port, function () {
-    console.log('\n  %s listening at http://localhost:%d/\n', name, port);
-  });
-};
+if (process.env.PORT) app.port = process.env.PORT;
 
 /**
  * Start.
  */
 
-if (!module.parent) app.start();
+app.listen(app.port, function () {
+  console.log('\n %s listening at http://localhost:%d/\n', app.name, app.port);
+});
