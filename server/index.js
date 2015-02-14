@@ -6,6 +6,7 @@
 var detective = require('../lib/detective');
 var favicon = require('koa-favicon');
 var logger = require('koa-logger');
+var thunkify = require('thunkify');
 var json = require('koa-json');
 var koa = require('koa');
 
@@ -32,6 +33,12 @@ app.use(logger());
  */
 
 app.use(json({ pretty: app.env === 'development' }));
+
+/**
+ * Thunkify
+ */
+
+detective.analyze = thunkify(detective.analyze.bind(detective));
 
 /**
  * URL required.
