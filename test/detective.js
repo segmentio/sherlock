@@ -31,6 +31,14 @@ describe('detective.analyze(url)', function () {
       detected(results, 'Google Analytics', { trackingId: 'UA-XXXX-Y' })
     });
   });
+  describe('Google Tag Manager', function () {
+    it('should detect script', function *() {
+      var url = fixture('google-tag-manager/index.html');
+      var results = yield detective.analyze(url);
+
+      detected(results, 'Google Tag Manager', { containerId: 'GTM-KF7RSC' })
+    });
+  });
   describe('Mixpanel', function () {
     it('should detect script', function *() {
       var url = fixture('mixpanel/index.html');
