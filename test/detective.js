@@ -55,6 +55,14 @@ describe('detective.analyze(url)', function () {
       detected(results, 'FullStory', { fsOrg: '<FS_ORG>' })
     });
   });
+  describe('TrackJS', function () {
+    it('should detect script', function *() {
+      var url = fixture('trackjs/index.html');
+      var results = yield detective.analyze(url);
+
+      detected(results, 'TrackJS', { token: 'YOUR_TOKEN' })
+    });
+  });
 });
 
 function fixture(file) {
