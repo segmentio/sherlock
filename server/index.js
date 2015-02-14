@@ -8,7 +8,7 @@ var bodyParser = require('koa-body-parser');
 var favicon    = require('koa-favicon');
 var koaLogger  = require('koa-logger');
 var json       = require('koa-json');
-var stats      = require('./middleware/stats');
+var stats      = require('koa-stats');
 var koa        = require('koa');
 
 /**
