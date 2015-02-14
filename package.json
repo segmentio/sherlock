@@ -8,11 +8,9 @@
   "dependencies": {
     "commander": "^2.6.0",
     "koa": "^0.17.0",
-    "koa-body-parser": "^1.1.1",
     "koa-favicon": "^1.2.0",
     "koa-json": "^1.1.1",
     "koa-logger": "^1.2.2",
-    "koa-stats": "0.0.1",
     "nightmare": "^1.7.0",
     "thunkify": "^2.1.2"
   },

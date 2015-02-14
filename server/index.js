@@ -3,13 +3,11 @@
  * Dependencies.
  */
 
-var detective  = require('../lib/detective');
-var bodyParser = require('koa-body-parser');
-var favicon    = require('koa-favicon');
-var koaLogger  = require('koa-logger');
-var json       = require('koa-json');
-var stats      = require('koa-stats');
-var koa        = require('koa');
+var detective = require('../lib/detective');
+var favicon = require('koa-favicon');
+var logger = require('koa-logger');
+var json = require('koa-json');
+var koa = require('koa');
 
 /**
  * App.
@@ -27,49 +25,28 @@ app.use(favicon());
  * Logging.
  */
 
-app.use(koaLogger());
-
-/**
- * Body parsing.
- */
-
-app.use(bodyParser());
+app.use(logger());
 
 /**
  * JSON output helper.
  */
 
-app.use(json({ pretty: true }));
-
-/**
- * Stats.
- */
-
-app.use(stats());
+app.use(json({ pretty: app.env === 'development' }));
 
 /**
  * URL required.
  */
 
 app.use(function*(next){
-  var url = this.request.query.url;
-  if (!url) this.throw('url required', 400);
-  this.state.url = url;
-  yield next;
+  var url = this.query.url;
+  if (!url) this.throw(403, 'You need to provide a ?url= query argument.');
+  this.body = yield detective.analyze(url);
 });
 
 /**
- * Detective.
+ * Error-handing.
  */
 
-app.use(function*(next){
-  var url = this.state.url;  
-  var results = yield detective.analyze(url);
-  this.body = results;
+app.on('error', function (err, ctx) {
+  if (app.env !== 'testing') console.error(err.stack);
 });
-
-/**
- * Start.
- */
- 
-if (!module.parent) app.start();

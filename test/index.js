@@ -3,15 +3,15 @@
  * Dependencies.
  */
 
-var assert  = require('assert');
 var request = require('supertest');
-var app     = require('..');
+var assert = require('assert');
+var app = require('..');
 
 /**
- * Settings.
+ * Set the env.
  */
 
-var route = '/?url=';
+app.env = 'testing';
 
 /**
  * Tests.
@@ -24,27 +24,28 @@ describe('analytics-detective', function(){
       assert(app.use);
     });
   });
-  
+
   describe('GET /?url=<url>', function(){
     before(function*(){
       app = app.listen();
     });
 
     it('should 200', function(done){
-      var url = 'stevenmiller888.github.io';
+      this.slow('10s')
+      this.timeout('15s');
+
       request(app)
-        .get(route + url)
+        .get('/')
+        .query({ url: 'stevenmiller888.github.io' })
         .expect(200)
         .end(done);
     });
-    
+
     it('should 400 if no url is present', function(done){
-      var url = '';
       request(app)
-        .get(route + url)
-        .expect(400)
-        .end(function(err, res){
-          if (err) return done(err);
+        .get('/')
+        .expect(403)
+        .end(function(){
           done();
         });
     });

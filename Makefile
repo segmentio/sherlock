@@ -24,15 +24,13 @@ server: node_modules
 #
 
 test: node_modules
-	@pkill phantomjs &
 	@$(MOCHA) --harmony ./test
-	@pkill phantomjs &
 
 #
 # Clean.
 #
 
-clean:
+distclean:
 	@rm -rf node_modules
 
 #
