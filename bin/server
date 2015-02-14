@@ -20,6 +20,7 @@ program
  */
 
 app.name = 'Analytics Detective';
+app.port = program.port;
 if (process.env.PORT) app.port = process.env.PORT;
 
 /**
