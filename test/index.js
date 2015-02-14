@@ -17,7 +17,7 @@ app.env = 'testing';
  * Tests.
  */
 
-describe('analytics-detective', function(){
+describe.skip('analytics-detective', function(){
   describe('server', function(){
     it('should expose a koa app', function*(){
       assert(app);
