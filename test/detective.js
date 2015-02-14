@@ -63,6 +63,14 @@ describe('detective.analyze(url)', function () {
       detected(results, 'TrackJS', { token: 'YOUR_TOKEN' })
     });
   });
+  describe('KISSmetrics', function () {
+    it('should detect script', function *() {
+      var url = fixture('kissmetrics/index.html');
+      var results = yield detective.analyze(url);
+
+      detected(results, 'KISSmetrics', { apiKey: '57a0897d0c675651f450229d65ccf4a605112804' })
+    });
+  });
 });
 
 function fixture(file) {
