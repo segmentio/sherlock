@@ -13,7 +13,7 @@ var path = require('path');
  */
 
 describe('detective.analyze(url)', function () {
-  this.slow('7s');
+  this.slow('4s');
   this.timeout('10s');
 
   before(function (done) {
