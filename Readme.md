@@ -6,4 +6,4 @@ Detect which integrations a website is using and find their API keys.
 
 ## Usage
 
-![Usage](http://cl.ly/image/2f0y3B2S3M0F/Screen%20Shot%202015-02-12%20at%205.37.22%20PM.png)
+![](http://cl.ly/image/2c3F1d153S0z/Screen%20Shot%202015-02-15%20at%2010.02.05%20PM.png)
