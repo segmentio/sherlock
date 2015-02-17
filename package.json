@@ -6,7 +6,6 @@
   "license": "MIT",
   "main": "server/index.js",
   "dependencies": {
-    "array": "^0.4.3",
     "commander": "^2.6.0",
     "koa": "^0.17.0",
     "koa-favicon": "^1.2.0",
