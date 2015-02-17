@@ -36,12 +36,16 @@ describe('analytics-detective', function(){
 
       request(app)
         .get('/')
-        .query({ url: 'stevenmiller888.github.io' })
-        .expect(200)
+        .query({ url: 'dbarnes.info' })
+        .expect(200, {
+          'Google Analytics': {
+            trackingId: 'UA-34996343-1'
+          }
+        })
         .end(done);
     });
 
-    it('should 400 if no url is present', function(done){
+    it('should 403 if no url is present', function(done){
       request(app)
         .get('/')
         .expect(403)
