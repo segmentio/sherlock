@@ -82,6 +82,6 @@ describe('detective.analyze(url)', function () {
   });
 });
 
-function fixture(file) {
+function fixture (file) {
   return 'http://localhost:8002/' + file;
 }

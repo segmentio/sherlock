@@ -19,18 +19,18 @@ app.env = 'testing';
 
 describe('analytics-detective', function () {
   describe('server', function () {
-    it('should expose a koa app', function*(){
+    it('should expose a koa app', function *() {
       assert(app);
       assert(app.use);
     });
   });
 
   describe('GET /?url=<url>', function () {
-    before(function*(){
+    before(function* () {
       app = app.listen();
     });
 
-    it('should 200', function(done){
+    it('should 200', function (done) {
       this.slow('10s')
       this.timeout('15s');
 
@@ -45,7 +45,7 @@ describe('analytics-detective', function () {
         .end(done);
     });
 
-    it('should 403 if no url is present', function(done){
+    it('should 403 if no url is present', function (done) {
       request(app)
         .get('/')
         .expect(403)
