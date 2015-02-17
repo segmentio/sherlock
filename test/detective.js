@@ -13,7 +13,7 @@ var path = require('path');
  */
 
 describe('detective.analyze(url)', function () {
-  this.slow('7s');
+  this.slow('4s');
   this.timeout('10s');
 
   before(function (done) {
@@ -82,8 +82,8 @@ function fixture(file) {
 }
 
 function detected(results, name, settings) {
-  var found = results.integrations.filter(function (integration) {
-    return integration.name === name;
+  var found = results.filter(function (result) {
+    return result.name === name;
   })[0];
 
   assert.deepEqual(found, {
