@@ -17,15 +17,15 @@ app.env = 'testing';
  * Tests.
  */
 
-describe('analytics-detective', function(){
-  describe('server', function(){
+describe('analytics-detective', function () {
+  describe('server', function () {
     it('should expose a koa app', function*(){
       assert(app);
       assert(app.use);
     });
   });
 
-  describe('GET /?url=<url>', function(){
+  describe('GET /?url=<url>', function () {
     before(function*(){
       app = app.listen();
     });
@@ -49,7 +49,7 @@ describe('analytics-detective', function(){
       request(app)
         .get('/')
         .expect(403)
-        .end(function(){
+        .end(function () {
           done();
         });
     });
