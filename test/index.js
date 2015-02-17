@@ -17,15 +17,15 @@ app.env = 'testing';
  * Tests.
  */
 
-describe('analytics-detective', function(){
-  describe('server', function(){
+describe('analytics-detective', function () {
+  describe('server', function () {
     it('should expose a koa app', function*(){
       assert(app);
       assert(app.use);
     });
   });
 
-  describe('GET /?url=<url>', function(){
+  describe('GET /?url=<url>', function () {
     before(function*(){
       app = app.listen();
     });
@@ -36,16 +36,20 @@ describe('analytics-detective', function(){
 
       request(app)
         .get('/')
-        .query({ url: 'stevenmiller888.github.io' })
-        .expect(200)
+        .query({ url: 'dbarnes.info' })
+        .expect(200, {
+          'Google Analytics': {
+            trackingId: 'UA-34996343-1'
+          }
+        })
         .end(done);
     });
 
-    it('should 400 if no url is present', function(done){
+    it('should 403 if no url is present', function(done){
       request(app)
         .get('/')
         .expect(403)
-        .end(function(){
+        .end(function () {
           done();
         });
     });
