@@ -24,7 +24,7 @@ describe('server', function () {
   });
 });
 
-describe.only('GET /?url=<url>', function () {
+describe('GET /?url=<url>', function () {
   this.slow('6s');
   this.timeout('10s');
 
