@@ -2,7 +2,7 @@ var integrations = require('../lib/integrations');
 var assert = require('assert');
 var vm = require('vm');
 
-describe.only('integrations', function () {
+describe('integrations', function () {
   describe('Adroll', function () {
     var integration = integrations['Adroll'];
 
