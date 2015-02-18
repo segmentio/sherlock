@@ -72,7 +72,7 @@ describe('detective.analyze(url)', function () {
     });
   });
   
-  describe.only('Keen.io', function () {
+  describe('Keen.io', function () {
     it('should detect script', function *() {
       var url = fixture('keen-io/index.html');
       var results = yield detective.analyze(url);
