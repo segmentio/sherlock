@@ -34,7 +34,7 @@ describe('GET /?url=<url>', function () {
 
   it('should 403 if no url is present', function (done) {
     this.slow(200);
-    this.timeout('1s')
+    this.timeout('1s');
 
     request(app)
       .get('/')
@@ -55,7 +55,7 @@ describe('GET /?url=<url>', function () {
       })
       .end(done);
   });
-  
+
   it('should properly handle a real site', function (done) {
     request(app)
       .get('/')
@@ -70,7 +70,7 @@ describe('GET /?url=<url>', function () {
       })
       .end(done);
   });
-  
+
   it('should properly handle a real site', function (done) {
     request(app)
       .get('/')
