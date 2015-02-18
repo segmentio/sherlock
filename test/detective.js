@@ -32,6 +32,20 @@ describe('detective.analyze(url)', function () {
       });
     });
   });
+  
+  describe.only('Alexa', function () {
+    it('should detect script', function *() {
+      var url = fixture('alexa/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, {
+        'Alexa': {
+          accountId: 'mWuej1aAkN00qu',
+          domain: 'segment.io'
+        }
+      });
+    });
+  });
 
   describe('Amplitude', function () {
     it('should detect script', function *() {
