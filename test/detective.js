@@ -108,6 +108,15 @@ describe('detective.analyze(url)', function () {
     });
   });
 
+  describe('Intercom', function () {
+    it('should detect script', function *() {
+      var url = fixture('intercom/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, { 'Intercom': { appId: '<APP_ID>' } });
+    });
+  });
+
   describe('Keen.io', function () {
     it('should detect script', function *() {
       var url = fixture('keen-io/index.html');
