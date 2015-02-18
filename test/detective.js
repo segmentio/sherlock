@@ -6,7 +6,6 @@
 var detective = require('../lib/detective');
 var server = require('./server');
 var assert = require('assert');
-var path = require('path');
 
 /**
  * Detective.
@@ -19,7 +18,7 @@ describe('detective.analyze(url)', function () {
   before(function (done) {
     server.listen(8002, done);
   });
-  
+
   describe('Amplitude', function () {
     it('should detect script', function *() {
       var url = fixture('amplitude/index.html');
@@ -28,7 +27,7 @@ describe('detective.analyze(url)', function () {
       assert.deepEqual(results, { 'Amplitude': { apiKey: 'ad3c426eb736d7442a65da8174bc1b1b' } });
     });
   });
-  
+
   describe('Customer.io', function () {
     it('should detect script', function *() {
       var url = fixture('customer-io/index.html');
@@ -71,7 +70,7 @@ describe('detective.analyze(url)', function () {
       assert.deepEqual(results, { 'Heap': { appId: '1535634150' } });
     });
   });
-  
+
   describe('Keen.io', function () {
     it('should detect script', function *() {
       var url = fixture('keen-io/index.html');
@@ -123,6 +122,6 @@ describe('detective.analyze(url)', function () {
   });
 });
 
-function fixture (file) {
+function fixture(file) {
   return 'http://localhost:8002/' + file;
 }
