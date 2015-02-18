@@ -19,6 +19,20 @@ describe('detective.analyze(url)', function () {
     server.listen(8002, done);
   });
 
+  describe.only('Adroll', function () {
+    it('should detect script', function *() {
+      var url = fixture('adroll/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, {
+        'Adroll': {
+          advertisingId: 'FSQJWMMZ2NEAZH6XWKVCNO',
+          pixelId: 'N6HGWT4ALRDRXCAO5PLTB6'
+        }
+      });
+    });
+  });
+
   describe('Amplitude', function () {
     it('should detect script', function *() {
       var url = fixture('amplitude/index.html');
