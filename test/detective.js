@@ -28,6 +28,15 @@ describe('detective.analyze(url)', function () {
       assert.deepEqual(results, { 'Amplitude': { apiKey: 'ad3c426eb736d7442a65da8174bc1b1b' } });
     });
   });
+  
+  describe('Customer.io', function () {
+    it('should detect script', function *() {
+      var url = fixture('customer-io/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, { 'Customer.io': { siteId: 'YOUR SITE ID HERE' } });
+    });
+  });
 
   describe('Google Analytics', function () {
     it('should detect classic script', function *() {
