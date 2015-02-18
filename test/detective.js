@@ -19,6 +19,15 @@ describe('detective.analyze(url)', function () {
   before(function (done) {
     server.listen(8002, done);
   });
+  
+  describe('Amplitude', function () {
+    it('should detect script', function *() {
+      var url = fixture('amplitude/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, { 'Amplitude': { apiKey: 'ad3c426eb736d7442a65da8174bc1b1b' } });
+    });
+  });
 
   describe('Google Analytics', function () {
     it('should detect classic script', function *() {
