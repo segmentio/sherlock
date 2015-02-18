@@ -17,28 +17,21 @@ ESLINT := $(BIN)/eslint
 # Server.
 #
 
-server: node_modules
+server: | node_modules
 	@$(NODE) ./bin/server
 
 #
 # Test.
 #
 
-test: node_modules
+test: | node_modules
 	@$(MOCHA) --harmony ./test
-
-#
-# Clean.
-#
-
-distclean:
-	@rm -rf node_modules
 
 #
 # Lint.
 #
 
-lint:
+lint: | node_modules
 	@$(ESLINT) .
 
 #
@@ -47,6 +40,13 @@ lint:
 
 node_modules: package.json
 	@npm install
+
+#
+# Clean.
+#
+
+distclean:
+	@rm -rf node_modules
 
 #
 # Phonies.
