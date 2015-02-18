@@ -33,7 +33,7 @@ describe('detective.analyze(url)', function () {
     });
   });
   
-  describe.only('Alexa', function () {
+  describe('Alexa', function () {
     it('should detect script', function *() {
       var url = fixture('alexa/index.html');
       var results = yield detective.analyze(url);
@@ -105,6 +105,15 @@ describe('detective.analyze(url)', function () {
       var results = yield detective.analyze(url);
 
       assert.deepEqual(results, { 'Heap': { appId: '1535634150' } });
+    });
+  });
+  
+  describe('Intercom', function () {
+    it('should detect script', function *() {
+      var url = fixture('intercom/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, { 'Intercom': { appId: '<APP_ID>' } });
     });
   });
 
