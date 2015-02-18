@@ -32,8 +32,8 @@ describe('detective.analyze(url)', function () {
       });
     });
   });
-  
-  describe.only('Alexa', function () {
+
+  describe('Alexa', function () {
     it('should detect script', function *() {
       var url = fixture('alexa/index.html');
       var results = yield detective.analyze(url);
@@ -64,7 +64,7 @@ describe('detective.analyze(url)', function () {
       assert.deepEqual(results, { 'Customer.io': { siteId: 'YOUR SITE ID HERE' } });
     });
   });
-  
+
   describe('FullStory', function () {
     it('should detect script', function *() {
       var url = fixture('fullstory/index.html');
@@ -121,7 +121,7 @@ describe('detective.analyze(url)', function () {
       });
     });
   });
-  
+
   describe('KISSmetrics', function () {
     it('should detect script', function *() {
       var url = fixture('kissmetrics/index.html');
