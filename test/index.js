@@ -56,7 +56,7 @@ describe.only('GET /?url=<url>', function () {
       .end(done);
   });
   
-  it('should properly handle another real site', function (done) {
+  it('should properly handle a real site', function (done) {
     request(app)
       .get('/')
       .query({ url: 'starbucks.com' })
@@ -66,6 +66,18 @@ describe.only('GET /?url=<url>', function () {
         },
         'Google Tag Manager': {
           containerId: 'GTM-NQ2H5B'
+        }
+      })
+      .end(done);
+  });
+  
+  it('should properly handle a real site', function (done) {
+    request(app)
+      .get('/')
+      .query({ url: 'piazza.com' })
+      .expect(200, {
+        'Google Analytics': {
+          trackingId: 'UA-21514163-1'
         }
       })
       .end(done);
