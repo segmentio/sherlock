@@ -264,7 +264,7 @@ describe('integrations', function () {
     it('should match all the correct URLs via pattern', function () {
       var urls = [
         'api.intercom.io/api/js/library.js',
-        'static.intercomcdn.com/intercom.v1.js'
+        'https://widget.intercom.io/widget/'
       ];
 
       urls.forEach(function (url) {
