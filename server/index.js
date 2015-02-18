@@ -44,7 +44,7 @@ detective.analyze = thunkify(detective.analyze.bind(detective));
  * URL required.
  */
 
-app.use(function *(next) {
+app.use(function *() {
   var url = this.query.url;
   if (!url) this.throw(403, 'You need to provide a ?url= query argument.');
   this.body = yield detective.analyze(url);
@@ -54,6 +54,6 @@ app.use(function *(next) {
  * Error-handing.
  */
 
-app.on('error', function (err, ctx) {
+app.on('error', function (err) {
   if (app.env !== 'testing') console.error(err.stack);
 });
