@@ -12,7 +12,7 @@ var assert = require('assert');
  */
 
 describe('detective.analyze(url)', function () {
-  this.slow('6s');
+  this.slow('3s');
   this.timeout('10s');
 
   before(function (done) {
