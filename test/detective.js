@@ -19,7 +19,7 @@ describe('detective.analyze(url)', function () {
     server.listen(8002, done);
   });
 
-  describe.only('Adroll', function () {
+  describe('Adroll', function () {
     it('should detect script', function *() {
       var url = fixture('adroll/index.html');
       var results = yield detective.analyze(url);
@@ -48,6 +48,15 @@ describe('detective.analyze(url)', function () {
       var results = yield detective.analyze(url);
 
       assert.deepEqual(results, { 'Customer.io': { siteId: 'YOUR SITE ID HERE' } });
+    });
+  });
+  
+  describe('FullStory', function () {
+    it('should detect script', function *() {
+      var url = fixture('fullstory/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, { 'FullStory': { fsOrg: '<FS_ORG>' } });
     });
   });
 
@@ -98,6 +107,15 @@ describe('detective.analyze(url)', function () {
       });
     });
   });
+  
+  describe('KISSmetrics', function () {
+    it('should detect script', function *() {
+      var url = fixture('kissmetrics/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, { 'KISSmetrics': { apiKey: '57a0897d0c675651f450229d65ccf4a605112804' } });
+    });
+  });
 
   describe('Mixpanel', function () {
     it('should detect script', function *() {
@@ -108,30 +126,12 @@ describe('detective.analyze(url)', function () {
     });
   });
 
-  describe('FullStory', function () {
-    it('should detect script', function *() {
-      var url = fixture('fullstory/index.html');
-      var results = yield detective.analyze(url);
-
-      assert.deepEqual(results, { 'FullStory': { fsOrg: '<FS_ORG>' } });
-    });
-  });
-
   describe('TrackJS', function () {
     it('should detect script', function *() {
       var url = fixture('trackjs/index.html');
       var results = yield detective.analyze(url);
 
       assert.deepEqual(results, { 'TrackJS': { token: 'YOUR_TOKEN' } });
-    });
-  });
-
-  describe('KISSmetrics', function () {
-    it('should detect script', function *() {
-      var url = fixture('kissmetrics/index.html');
-      var results = yield detective.analyze(url);
-
-      assert.deepEqual(results, { 'KISSmetrics': { apiKey: '57a0897d0c675651f450229d65ccf4a605112804' } });
     });
   });
 });
