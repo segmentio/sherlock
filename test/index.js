@@ -24,7 +24,7 @@ describe('server', function () {
   });
 });
 
-describe('GET /?url=<url>', function () {
+describe.only('GET /?url=<url>', function () {
   this.slow('6s');
   this.timeout('10s');
 
@@ -51,6 +51,21 @@ describe('GET /?url=<url>', function () {
       .expect(200, {
         'Google Analytics': {
           trackingId: 'UA-34996343-1'
+        }
+      })
+      .end(done);
+  });
+  
+  it('should properly handle another real site', function (done) {
+    request(app)
+      .get('/')
+      .query({ url: 'starbucks.com' })
+      .expect(200, {
+        'Google Analytics': {
+          trackingId: 'UA-9155837-1'
+        },
+        'Google Tag Manager': {
+          containerId: 'GTM-NQ2H5B'
         }
       })
       .end(done);
