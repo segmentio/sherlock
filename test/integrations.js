@@ -356,7 +356,7 @@ describe('integrations', function () {
     it('should return the right settings object', function () {
       var ctx = {
         window: {
-          KM_KEY: 'a'
+          _kmk: 'a'
         }
       };
 
