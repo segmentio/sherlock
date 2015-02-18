@@ -31,8 +31,8 @@ describe('analytics-detective', function () {
     });
 
     it('should 200', function (done) {
-      this.slow('10s');
-      this.timeout('15s');
+      this.slow('6s');
+      this.timeout('10s');
 
       request(app)
         .get('/')
