@@ -63,6 +63,15 @@ describe('detective.analyze(url)', function () {
     });
   });
 
+  describe('Heap', function () {
+    it('should detect script', function *() {
+      var url = fixture('heap/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, { 'Heap': { appId: '1535634150' } });
+    });
+  });
+
   describe('Mixpanel', function () {
     it('should detect script', function *() {
       var url = fixture('mixpanel/index.html');
