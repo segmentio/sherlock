@@ -25,53 +25,48 @@ describe('integrations', function () {
     });
 
     it('should return the right settings object for the universal script', function () {
-      var ga = {
-        getAll: function () {
-          return [
-            {
-              get: function () {
-                return 'UA-XXXXX-XX';
-              }
+      var ctx = {
+        window: {
+          ga: {
+            getAll: function () {
+              return [
+                {
+                  get: function () {
+                    return 'UA-XXXXX-XX';
+                  }
+                }
+              ];
             }
-          ];
+          }
         }
       };
 
-      var ctx = {
-        window: {
-          ga: ga
-        },
-        ga: ga
-      };
-
-      var fn = 'settings = (' + integration.settings.toString() + ')()';
-      vm.runInNewContext(fn, ctx)
-
-      assert.deepEqual(ctx.settings, { trackingId: 'UA-XXXXX-XX' });
+      evaluate(integration, ctx, { trackingId: 'UA-XXXXX-XX' });
     });
 
     it('should return the right settings object for the classic script', function () {
-      var gat = {
-        _getTrackerByName: function () {
-          return {
-            _getAccount: function () {
-              return 'UA-XXXXX-XX';
+      var ctx = {
+        window: {
+          _gat: {
+            _getTrackerByName: function () {
+              return {
+                _getAccount: function () {
+                  return 'UA-XXXXX-XX';
+                }
+              };
             }
-          };
+          }
         }
       };
 
-      var ctx = {
-        window: {
-          _gat: gat
-        },
-        _gat: gat
-      };
-
-      var fn = 'settings = (' + integration.settings.toString() + ')()';
-      vm.runInNewContext(fn, ctx)
-
-      assert.deepEqual(ctx.settings, { trackingId: 'UA-XXXXX-XX' });
+      evaluate(integration, ctx, { trackingId: 'UA-XXXXX-XX' });
     });
   });
 });
+
+function evaluate(integration, ctx, expected) {
+  var fn = 'settings = (' + integration.settings.toString() + ')()';
+  vm.runInNewContext(fn, ctx);
+
+  assert.deepEqual(ctx.settings, expected);
+}
