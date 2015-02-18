@@ -11,6 +11,7 @@ NODE ?= n use 0.11.13 --harmony-generators
 
 BIN := ./node_modules/.bin
 MOCHA := $(BIN)/mocha
+ESLINT := $(BIN)/eslint
 
 #
 # Server.
@@ -34,6 +35,13 @@ distclean:
 	@rm -rf node_modules
 
 #
+# Lint.
+#
+
+lint:
+	@$(ESLINT) .
+
+#
 # Node Modules.
 #
 
@@ -44,6 +52,7 @@ node_modules: package.json
 # Phonies.
 #
 
-.PHONY: test
 .PHONY: server
-.PHONY: clean
+.PHONY: test
+.PHONY: distclean
+.PHONY: lint
