@@ -148,6 +148,20 @@ describe('detective.analyze(url)', function () {
       assert.deepEqual(results, { 'Mixpanel': { token: 'YOUR TOKEN' } });
     });
   });
+  
+  describe('Optimizely', function () {
+    it('should detect script', function *() {
+      var url = fixture('optimizely/index.html');
+      var results = yield detective.analyze(url);
+      
+      assert.deepEqual(results, {
+        'Optimizely': {
+          projectId: '170430035',
+          accountId: '170430035'
+        }
+      });
+    });
+  });
 
   describe('TrackJS', function () {
     it('should detect script', function *() {
