@@ -17,7 +17,7 @@ app.env = 'testing';
  * Tests.
  */
 
-describe.only('server', function () {
+describe('server', function () {
   it('should expose a koa app', function *() {
     assert(app);
     assert(app.use);
