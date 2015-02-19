@@ -391,8 +391,8 @@ describe('integrations', function () {
       evaluate(integration, ctx, { token: 'a' });
     });
   });
-  
-  describe.only('Optimizely', function () {
+
+  describe('Optimizely', function () {
     var integration = integrations['Optimizely'];
 
     it('should match all the correct URLs via pattern', function () {
@@ -451,6 +451,62 @@ describe('integrations', function () {
       };
 
       evaluate(integration, ctx, { token: 'a' });
+    });
+  });
+
+  describe('Woopra', function () {
+    var integration = integrations['Woopra'];
+
+    it('should match all the correct URLs via pattern', function () {
+      var urls = [
+        'http://static.woopra.com/js/w.js'
+      ];
+
+      urls.forEach(function (url) {
+        assert(url.match(integration.pattern), url + ' should have been matched');
+      });
+    });
+
+    it('should return the right settings object', function () {
+      var ctx = {
+        window: {
+          woopraTracker: {
+            config: function () {
+              return {
+                domain: 'test.com',
+                cookie_name: 'hello',
+                cookie_path: '/',
+                ping: true,
+                ping_interval: 12000,
+                idle_timeout: 300000,
+                download_tracking: true,
+                outgoing_tracking: false,
+                outgoing_ignore_subdomain: true,
+                download_pause: 200,
+                outgoing_pause: 400,
+                ignore_query_url: false,
+                hide_campaign: true
+              };
+            }
+          }
+        }
+      };
+
+      evaluate(integration, ctx, {
+        domain: 'test.com',
+        cookie_name: 'hello',
+        cookie_path: '/',
+        ping: true,
+        ping_interval: 12000,
+        idle_timeout: 300000,
+        download_tracking: true,
+        outgoing_tracking: false,
+        outgoing_ignore_subdomain: true,
+        download_pause: 200,
+        outgoing_pause: 400,
+        ignore_query_url: false,
+        hide_campaign: true
+      });
     });
   });
 });

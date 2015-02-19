@@ -148,12 +148,12 @@ describe('detective.analyze(url)', function () {
       assert.deepEqual(results, { 'Mixpanel': { token: 'YOUR TOKEN' } });
     });
   });
-  
+
   describe('Optimizely', function () {
     it('should detect script', function *() {
       var url = fixture('optimizely/index.html');
       var results = yield detective.analyze(url);
-      
+
       assert.deepEqual(results, {
         'Optimizely': {
           projectId: '170430035',
@@ -169,6 +169,31 @@ describe('detective.analyze(url)', function () {
       var results = yield detective.analyze(url);
 
       assert.deepEqual(results, { 'TrackJS': { token: 'YOUR_TOKEN' } });
+    });
+  });
+
+  describe('Woopra', function () {
+    it('should detect script', function *() {
+      var url = fixture('woopra/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, {
+        'Woopra': {
+          domain: 'test.com',
+          cookie_name: 'hello',
+          cookie_path: '/',
+          ping: true,
+          ping_interval: 12000,
+          idle_timeout: 300000,
+          download_tracking: true,
+          outgoing_tracking: false,
+          outgoing_ignore_subdomain: true,
+          download_pause: 200,
+          outgoing_pause: 400,
+          ignore_query_url: false,
+          hide_campaign: true
+        }
+      });
     });
   });
 });
