@@ -391,6 +391,40 @@ describe('integrations', function () {
       evaluate(integration, ctx, { token: 'a' });
     });
   });
+  
+  describe.only('Optimizely', function () {
+    var integration = integrations['Optimizely'];
+
+    it('should match all the correct URLs via pattern', function () {
+      var urls = [
+        'cdn.optimizely.com'
+      ];
+
+      urls.forEach(function (url) {
+        assert(url.match(integration.pattern), url + ' should have been matched');
+      });
+    });
+
+    it('should return the right settings object', function () {
+      var ctx = {
+        window: {
+          optimizely: {
+            getProjectId: function () {
+              return 'a';
+            },
+            getAccountId: function () {
+              return 'b';
+            }
+          }
+        }
+      };
+
+      evaluate(integration, ctx, {
+        projectId: 'a',
+        accountId: 'b'
+      });
+    });
+  });
 
   describe('TrackJS', function () {
     var integration = integrations['TrackJS'];
