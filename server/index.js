@@ -8,6 +8,7 @@ var favicon = require('koa-favicon');
 var logger = require('koa-logger');
 var thunkify = require('thunkify');
 var json = require('koa-json');
+var cors = require('koa-cors');
 var koa = require('koa');
 
 /**
@@ -21,6 +22,12 @@ var app = module.exports = koa();
  */
 
 app.use(favicon());
+
+/**
+ * CORS.
+ */
+
+app.use(cors());
 
 /**
  * Logging.
