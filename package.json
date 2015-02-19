@@ -11,6 +11,7 @@
     "each-module": "^1.0.0",
     "for-each": "^0.3.2",
     "koa": "^0.17.0",
+    "koa-cors": "0.0.14",
     "koa-favicon": "^1.2.0",
     "koa-json": "^1.1.1",
     "koa-logger": "^1.2.2",
