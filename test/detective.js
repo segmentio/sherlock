@@ -4,7 +4,7 @@
  */
 
 var detective = require('../lib/detective');
-var server = require('./server');
+var server = require('./server/index.js');
 var assert = require('assert');
 
 /**
