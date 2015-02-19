@@ -492,6 +492,34 @@ describe('integrations', function () {
     });
   });
 
+  describe('Quantcast', function () {
+    var integration = integrations['Quantcast'];
+
+    it('should match all the correct URLs via pattern', function () {
+      var urls = [
+        'http://edge.quantserve.com/quant.js'
+      ];
+
+      urls.forEach(function (url) {
+        assert(url.match(integration.pattern), url + ' should have been matched');
+      });
+    });
+
+    it('should return the right settings object', function () {
+      var ctx = {
+        window: {
+          __qc: {
+            qopts: {
+              qacct: 'p-23423sd'
+            }
+          }
+        }
+      };
+
+      evaluate(integration, ctx, { pCode: 'p-23423sd' });
+    });
+  });
+
   describe('TrackJS', function () {
     var integration = integrations['TrackJS'];
 
