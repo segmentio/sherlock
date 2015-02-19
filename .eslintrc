@@ -8,6 +8,7 @@
   },
   "rules": {
     "curly": [ 2, "multi" ],
+    "eol-last": [ 2, "always" ],
     "no-shadow": 0,
     "no-trailing-spaces": 2,
     "no-underscore-dangle": 0,
