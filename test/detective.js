@@ -108,6 +108,15 @@ describe('detective.analyze(url)', function () {
     });
   });
 
+  describe('Inspectlet', function () {
+    it('should detect script', function *() {
+      var url = fixture('inspectlet/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, { 'Inspectlet': { wid: 3456789878 } });
+    });
+  });
+
   describe('Intercom', function () {
     it('should detect script', function *() {
       var url = fixture('intercom/index.html');

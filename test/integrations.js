@@ -258,6 +258,44 @@ describe('integrations', function () {
     });
   });
 
+  describe('Inspectlet', function () {
+    var integration = integrations['Inspectlet'];
+
+    it('should match all the correct URLs via pattern', function () {
+      var urls = [
+        'https://cdn.inspectlet.com/inspectlet.js'
+      ];
+
+      urls.forEach(function (url) {
+        assert(url.match(integration.pattern), url + ' should have been matched');
+      });
+    });
+
+    it('should return the right settings object for direct integration', function () {
+      var ctx = {
+        window: {
+          __insp: {
+            wid: 21923940
+          }
+        }
+      };
+
+      evaluate(integration, ctx, { wid: 21923940 });
+    });
+
+    it('should return the right settings object for segment integration', function () {
+      var ctx = {
+        window: {
+          __insp: {
+            wid: 21923940
+          }
+        }
+      };
+
+      evaluate(integration, ctx, { wid: 21923940 });
+    });
+  });
+
   describe('Intercom', function () {
     var integration = integrations['Intercom'];
 
