@@ -66,6 +66,10 @@ describe('GET /?url=<url>', function () {
         },
         'Google Tag Manager': {
           containerId: 'GTM-NQ2H5B'
+        },
+        'Optimizely': {
+          accountId: '6558036',
+          projectId: '6558036'
         }
       })
       .end(done);
