@@ -430,6 +430,34 @@ describe('integrations', function () {
     });
   });
 
+  describe.only('Olark', function () {
+    var integration = integrations['Olark'];
+
+    it('should match all the correct URLs via pattern', function () {
+      var urls = [
+        'http://static.olark.com/jsclient/loader0.js'
+      ];
+
+      urls.forEach(function (url) {
+        assert(url.match(integration.pattern), url + ' should have been matched');
+      });
+    });
+
+    it('should return the right settings object', function () {
+      var ctx = {
+        window: {
+          olark: {
+            _: {
+              siteId: '1232-123-12-112'
+            }
+          }
+        }
+      };
+
+      evaluate(integration, ctx, { siteId: '1232-123-12-112' });
+    });
+  });
+
   describe('Optimizely', function () {
     var integration = integrations['Optimizely'];
 

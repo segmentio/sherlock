@@ -158,6 +158,15 @@ describe('detective.analyze(url)', function () {
     });
   });
 
+  describe('Olark', function () {
+    it('should detect script', function *() {
+      var url = fixture('olark/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, { 'Olark': { siteId: '6185-174-10-1457' } });
+    });
+  });
+
   describe('Optimizely', function () {
     it('should detect script', function *() {
       var url = fixture('optimizely/index.html');
