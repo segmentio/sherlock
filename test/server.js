@@ -44,7 +44,7 @@ describe('GET /?url=<url>', function () {
       });
   });
 
-  it('should properly handle a real site', function (done) {
+  it('should properly handle dbarnes.info', function (done) {
     request(app)
       .get('/')
       .query({ url: 'dbarnes.info' })
@@ -56,7 +56,7 @@ describe('GET /?url=<url>', function () {
       .end(done);
   });
 
-  it('should properly handle a real site', function (done) {
+  it('should properly handle starbucks.com', function (done) {
     request(app)
       .get('/')
       .query({ url: 'starbucks.com' })
@@ -71,7 +71,7 @@ describe('GET /?url=<url>', function () {
       .end(done);
   });
 
-  it('should properly handle a real site', function (done) {
+  it('should properly handle piazza.com', function (done) {
     request(app)
       .get('/')
       .query({ url: 'piazza.com' })
