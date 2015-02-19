@@ -430,7 +430,7 @@ describe('integrations', function () {
     });
   });
 
-  describe.only('Olark', function () {
+  describe('Olark', function () {
     var integration = integrations['Olark'];
 
     it('should match all the correct URLs via pattern', function () {
