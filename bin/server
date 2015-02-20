@@ -28,5 +28,5 @@ if (process.env.PORT) app.port = process.env.PORT;
  */
 
 app.listen(app.port, function () {
-  console.log('\n %s listening at http://localhost:%d/\n', app.name, app.port);
+  console.log('\n Query %s at http://localhost:%d/?url=\n', app.name, app.port);
 });
