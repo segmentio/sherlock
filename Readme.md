@@ -20,3 +20,11 @@ Get all integrations at <url>
   $ git clone segmentio/analytics-detective && cd analytics-detective
   $ make server
 ```
+
+## Note
+
+You will **need** to install PhantomJS separately. If you're using Homebrew, you can do this with the following command:
+
+```js
+  $ sudo brew update && brew install phantomjs
+```
