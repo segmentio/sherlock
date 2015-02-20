@@ -18,6 +18,15 @@ var koa = require('koa');
 var app = module.exports = koa();
 
 /**
+ * Ping.
+ */
+
+app.use(function *(next){
+  if (this.path === '/ping') return this.status = 200;
+  yield next;
+});
+
+/**
  * Favicon catcher.
  */
 
