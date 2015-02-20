@@ -10,9 +10,9 @@ Detect which integrations a website is using and find their API keys.
 
 ## API
 
-**GET** /?url=<url>
+**GET** /?url=url
 
-Get all integrations at <url>
+Get all integrations at url
 
 ## Develop
 
