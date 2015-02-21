@@ -3,8 +3,8 @@ var assert = require('assert');
 var vm = require('vm');
 
 describe('integrations', function () {
-  describe('Adroll', function () {
-    var integration = integrations['Adroll'];
+  describe('AdRoll', function () {
+    var integration = integrations['AdRoll'];
 
     it('should match all the correct URLs via pattern', function () {
       var urls = [
@@ -341,8 +341,8 @@ describe('integrations', function () {
     });
   });
 
-  describe('Keen.io', function () {
-    var integration = integrations['Keen.io'];
+  describe('Keen IO', function () {
+    var integration = integrations['Keen IO'];
 
     it('should match all the correct URLs via pattern', function () {
       var urls = [
@@ -520,8 +520,8 @@ describe('integrations', function () {
     });
   });
 
-  describe('TrackJS', function () {
-    var integration = integrations['TrackJS'];
+  describe('Track JS', function () {
+    var integration = integrations['Track JS'];
 
     it('should match all the correct URLs via pattern', function () {
       var urls = [
