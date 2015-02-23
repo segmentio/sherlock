@@ -73,3 +73,18 @@ app.use(function *() {
 app.on('error', function (err) {
   if (app.env !== 'testing') console.error(err.stack);
 });
+
+/**
+ * Config.
+ */
+
+app.name = 'Analytics Detective';
+app.port = 8001;
+
+/**
+ * Start.
+ */
+
+app.listen(app.port, function () {
+  console.log('\n Query %s at http://localhost:%d/?url=\n', app.name, app.port);
+});
