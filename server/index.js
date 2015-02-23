@@ -39,7 +39,7 @@ app.use(logger());
  * Ping.
  */
 
-app.use(function *(next){
+app.use(function *(next) {
   if (this.path === '/ping') return this.status = 200;
   yield next;
 });
