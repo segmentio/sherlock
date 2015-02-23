@@ -26,8 +26,8 @@ describe('detective.analyze(url)', function () {
 
       assert.deepEqual(results, {
         'AdRoll': {
-          advertisingId: 'FSQJWMMZ2NEAZH6XWKVCNO',
-          pixelId: 'N6HGWT4ALRDRXCAO5PLTB6'
+          advId: 'FSQJWMMZ2NEAZH6XWKVCNO',
+          pixId: 'N6HGWT4ALRDRXCAO5PLTB6'
         }
       });
     });
@@ -40,7 +40,7 @@ describe('detective.analyze(url)', function () {
 
       assert.deepEqual(results, {
         'Alexa': {
-          accountId: 'mWuej1aAkN00qu',
+          account: 'mWuej1aAkN00qu',
           domain: 'segment.io'
         }
       });
@@ -70,7 +70,7 @@ describe('detective.analyze(url)', function () {
       var url = fixture('fullstory/index.html');
       var results = yield detective.analyze(url);
 
-      assert.deepEqual(results, { 'FullStory': { fsOrg: '<FS_ORG>' } });
+      assert.deepEqual(results, { 'FullStory': { org: '<FS_ORG>' } });
     });
   });
 
@@ -207,18 +207,18 @@ describe('detective.analyze(url)', function () {
       assert.deepEqual(results, {
         'Woopra': {
           domain: 'test.com',
-          cookie_name: 'hello',
-          cookie_path: '/',
+          cookieName: 'hello',
+          cookiePath: '/',
           ping: true,
-          ping_interval: 12000,
-          idle_timeout: 300000,
-          download_tracking: true,
-          outgoing_tracking: false,
-          outgoing_ignore_subdomain: true,
-          download_pause: 200,
-          outgoing_pause: 400,
-          ignore_query_url: false,
-          hide_campaign: true
+          pingInterval: 12000,
+          idleTimeout: 300000,
+          downloadTracking: true,
+          outgoingTracking: false,
+          outgoingIgnoreSubdomains: true,
+          downloadPause: 200,
+          outgoingPause: 400,
+          ignoreQueryUrl: false,
+          hideCampaign: true
         }
       });
     });
