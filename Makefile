@@ -18,7 +18,7 @@ ESLINT := $(BIN)/eslint
 #
 
 server: | node_modules
-	@$(NODE) ./bin/server
+	@$(NODE) ./server
 
 #
 # Test.
