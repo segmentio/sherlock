@@ -26,8 +26,8 @@ describe('integrations', function () {
       };
 
       evaluate(integration, ctx, {
-        advertisingId: 'a',
-        pixelId: 'b'
+        advId: 'a',
+        pixId: 'b'
       });
     });
   });
@@ -56,7 +56,7 @@ describe('integrations', function () {
       };
 
       evaluate(integration, ctx, {
-        accountId: 'a',
+        account: 'a',
         domain: 'b'
       });
     });
@@ -141,7 +141,7 @@ describe('integrations', function () {
         }
       };
 
-      evaluate(integration, ctx, { fsOrg: 'a' });
+      evaluate(integration, ctx, { org: 'a' });
     });
   });
 
@@ -588,18 +588,18 @@ describe('integrations', function () {
 
       evaluate(integration, ctx, {
         domain: 'test.com',
-        cookie_name: 'hello',
-        cookie_path: '/',
+        cookieName: 'hello',
+        cookiePath: '/',
         ping: true,
-        ping_interval: 12000,
-        idle_timeout: 300000,
-        download_tracking: true,
-        outgoing_tracking: false,
-        outgoing_ignore_subdomain: true,
-        download_pause: 200,
-        outgoing_pause: 400,
-        ignore_query_url: false,
-        hide_campaign: true
+        pingInterval: 12000,
+        idleTimeout: 300000,
+        downloadTracking: true,
+        outgoingTracking: false,
+        outgoingIgnoreSubdomains: true,
+        downloadPause: 200,
+        outgoingPause: 400,
+        ignoreQueryUrl: false,
+        hideCampaign: true
       });
     });
   });
