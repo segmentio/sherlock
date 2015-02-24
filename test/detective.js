@@ -190,6 +190,15 @@ describe('detective.analyze(url)', function () {
     });
   });
 
+  describe('Totango', function () {
+    it('should detect script', function *() {
+      var url = fixture('Totango/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, { 'Totango': { serviceId: 'SP-0000-00' } });
+    });
+  });
+
   describe('Track JS', function () {
     it('should detect script', function *() {
       var url = fixture('trackjs/index.html');
