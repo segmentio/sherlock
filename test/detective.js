@@ -65,6 +65,15 @@ describe('detective.analyze(url)', function () {
     });
   });
 
+  describe('Drip', function () {
+    it('should detect script', function *() {
+      var url = fixture('drip/index.html');
+      var results = yield detective.analyze(url);
+
+      assert.deepEqual(results, { 'Drip': { account: '2522147' } });
+    });
+  });
+
   describe('FullStory', function () {
     it('should detect script', function *() {
       var url = fixture('fullstory/index.html');
