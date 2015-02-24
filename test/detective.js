@@ -192,7 +192,7 @@ describe('detective.analyze(url)', function () {
 
   describe('Totango', function () {
     it('should detect script', function *() {
-      var url = fixture('Totango/index.html');
+      var url = fixture('totango/index.html');
       var results = yield detective.analyze(url);
 
       assert.deepEqual(results, { 'Totango': { serviceId: 'SP-0000-00' } });
