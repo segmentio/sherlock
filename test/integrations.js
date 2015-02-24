@@ -520,6 +520,32 @@ describe('integrations', function () {
     });
   });
 
+  describe('Totango', function () {
+    var integration = integrations['Totango'];
+
+    it('should match all the correct URLs via pattern', function () {
+      var urls = [
+        'https://s3.amazonaws.com/totango-cdn/totango2.js'
+      ];
+
+      urls.forEach(function (url) {
+        assert(url.match(integration.pattern), url + ' should have been matched');
+      });
+    });
+
+    it('should return the right settings object', function () {
+      var ctx = {
+        window: {
+          totango_options: {
+            service_id: 'a'
+          }
+        }
+      };
+
+      evaluate(integration, ctx, { serviceId: 'a' });
+    });
+  });
+
   describe('Track JS', function () {
     var integration = integrations['Track JS'];
 
