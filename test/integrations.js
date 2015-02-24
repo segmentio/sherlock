@@ -121,6 +121,32 @@ describe('integrations', function () {
     });
   });
 
+  describe('Drip', function () {
+    var integration = integrations['Drip'];
+
+    it('should match all the correct URLs via pattern', function () {
+      var urls = [
+        'https://tag.getdrip.com/8838307.js'
+      ];
+
+      urls.forEach(function (url) {
+        assert(url.match(integration.pattern), url + ' should have been matched');
+      });
+    });
+
+    it('should return the right settings object', function () {
+      var ctx = {
+        window: {
+          _dcs: {
+            account: 'a'
+          }
+        }
+      };
+
+      evaluate(integration, ctx, { account: 'a' });
+    });
+  });
+
   describe('FullStory', function () {
     var integration = integrations['FullStory'];
 
