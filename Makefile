@@ -3,14 +3,14 @@
 # Environment.
 #
 
-NODE ?= n use 0.11.13 --harmony-generators
+NODE ?= node --harmony-generators
 
 #
 # Binaries.
 #
 
 BIN := ./node_modules/.bin
-MOCHA := $(BIN)/mocha
+MOCHA := $(BIN)/mocha --harmony-generators
 ESLINT := $(BIN)/eslint
 
 #

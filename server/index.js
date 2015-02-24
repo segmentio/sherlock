@@ -86,5 +86,5 @@ app.port = 8001;
  */
 
 app.listen(app.port, function () {
-  console.log('\n Query %s at http://localhost:%d/?url=\n', app.name, app.port);
+  console.log('\n Query %s at http://localhost:%d/?url=<url>\n', app.name, app.port);
 });
