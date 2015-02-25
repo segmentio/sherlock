@@ -163,7 +163,15 @@ describe('detective.analyze(url)', function () {
       var url = fixture('mixpanel/index.html');
       var results = yield detective.analyze(url);
 
-      assert.deepEqual(results, { 'Mixpanel': { token: 'YOUR TOKEN' } });
+      assert.deepEqual(results, {
+        'Mixpanel': {
+          token: 'YOUR TOKEN',
+          people: false,
+          trackAllPages: true,
+          trackCategorizedPages: false,
+          trackNamedPages: true
+        }
+      });
     });
   });
 
