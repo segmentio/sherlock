@@ -446,13 +446,23 @@ describe('integrations', function () {
         window: {
           mixpanel: {
             config: {
-              token: 'a'
+              token: 'a',
+              people: true,
+              trackAllPages: true,
+              trackCategorizedPages: false,
+              trackNamedPages: true
             }
           }
         }
       };
 
-      evaluate(integration, ctx, { token: 'a' });
+      evaluate(integration, ctx, {
+        token: 'a',
+        people: true,
+        trackAllPages: true,
+        trackCategorizedPages: false,
+        trackNamedPages: true
+      });
     });
   });
 
