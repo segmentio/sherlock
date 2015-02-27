@@ -18,7 +18,7 @@ ESLINT := $(BIN)/eslint
 #
 
 test: | node_modules
-	@$(MOCHA) --harmony ./test
+	@$(MOCHA)
 
 #
 # Lint.
@@ -46,5 +46,5 @@ distclean:
 #
 
 .PHONY: test
-.PHONY: distclean
 .PHONY: lint
+.PHONY: distclean
