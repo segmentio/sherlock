@@ -9,8 +9,7 @@
     "each-module": "^1.0.0",
     "for-each": "^0.3.2",
     "nightmare": "^1.7.0",
-    "normalize-url": "^1.0.2",
-    "thunkify": "^2.1.2"
+    "normalize-url": "^1.0.2"
   },
   "devDependencies": {
     "co-mocha": "^1.1.0",
@@ -19,6 +18,7 @@
     "koa": "^0.18.0",
     "koa-static": "^1.4.9",
     "mocha": "^2.1.0",
-    "supertest": "^0.15.0"
+    "supertest": "^0.15.0",
+    "thunkify": "^2.1.2"
   }
 }

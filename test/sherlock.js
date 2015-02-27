@@ -3,10 +3,10 @@
  * Module dependencies.
  */
 
-var sherlock = require('../lib/sherlock');
 var server = require('./server/index.js');
 var thunkify = require('thunkify');
 var assert = require('assert');
+var sherlock = require('..');
 
 /**
  * Detective.

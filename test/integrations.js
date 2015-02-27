@@ -1,4 +1,4 @@
-var integrations = require('../lib/integrations');
+var integrations = require('..').integrations;
 var assert = require('assert');
 var vm = require('vm');
 
