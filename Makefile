@@ -14,13 +14,6 @@ MOCHA := $(BIN)/mocha --harmony-generators
 ESLINT := $(BIN)/eslint
 
 #
-# Server.
-#
-
-server: | node_modules
-	@$(NODE) ./server
-
-#
 # Test.
 #
 
@@ -52,7 +45,6 @@ distclean:
 # Phonies.
 #
 
-.PHONY: server
 .PHONY: test
 .PHONY: distclean
 .PHONY: lint

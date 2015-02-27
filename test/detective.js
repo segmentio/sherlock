@@ -3,26 +3,28 @@
  * Module dependencies.
  */
 
-var detective = require('../lib/detective');
+var sherlock = require('../lib/sherlock');
 var server = require('./server/index.js');
+var thunkify = require('thunkify');
 var assert = require('assert');
 
 /**
  * Detective.
  */
 
-describe('detective.analyze(url)', function () {
+describe('sherlock.analyze(url)', function () {
   this.slow('3s');
   this.timeout('10s');
 
   before(function (done) {
     server.listen(8002, done);
+    sherlock.analyze = thunkify(sherlock.analyze.bind(sherlock));
   });
 
   describe('AdRoll', function () {
     it('should detect script', function *() {
       var url = fixture('adroll/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, {
         'AdRoll': {
@@ -36,7 +38,7 @@ describe('detective.analyze(url)', function () {
   describe('Alexa', function () {
     it('should detect script', function *() {
       var url = fixture('alexa/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, {
         'Alexa': {
@@ -50,7 +52,7 @@ describe('detective.analyze(url)', function () {
   describe('Amplitude', function () {
     it('should detect script', function *() {
       var url = fixture('amplitude/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Amplitude': { apiKey: 'ad3c426eb736d7442a65da8174bc1b1b' } });
     });
@@ -59,7 +61,7 @@ describe('detective.analyze(url)', function () {
   describe('Customer.io', function () {
     it('should detect script', function *() {
       var url = fixture('customer-io/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Customer.io': { siteId: 'YOUR SITE ID HERE' } });
     });
@@ -68,7 +70,7 @@ describe('detective.analyze(url)', function () {
   describe('Drip', function () {
     it('should detect script', function *() {
       var url = fixture('drip/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Drip': { account: '2522147' } });
     });
@@ -77,7 +79,7 @@ describe('detective.analyze(url)', function () {
   describe('FullStory', function () {
     it('should detect script', function *() {
       var url = fixture('fullstory/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'FullStory': { org: '<FS_ORG>' } });
     });
@@ -86,14 +88,14 @@ describe('detective.analyze(url)', function () {
   describe('Google Analytics', function () {
     it('should detect classic script', function *() {
       var url = fixture('google-analytics/classic.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Google Analytics': { trackingId: 'UA-XXXXX-X' } });
     });
 
     it('should detect universal script', function *() {
       var url = fixture('google-analytics/universal.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Google Analytics': { trackingId: 'UA-XXXX-Y' } });
     });
@@ -102,7 +104,7 @@ describe('detective.analyze(url)', function () {
   describe('Google Tag Manager', function () {
     it('should detect script', function *() {
       var url = fixture('google-tag-manager/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Google Tag Manager': { containerId: 'GTM-KF7RSC' } });
     });
@@ -111,7 +113,7 @@ describe('detective.analyze(url)', function () {
   describe('Heap', function () {
     it('should detect script', function *() {
       var url = fixture('heap/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Heap': { appId: '1535634150' } });
     });
@@ -120,7 +122,7 @@ describe('detective.analyze(url)', function () {
   describe('Inspectlet', function () {
     it('should detect script', function *() {
       var url = fixture('inspectlet/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Inspectlet': { wid: 3456789878 } });
     });
@@ -129,7 +131,7 @@ describe('detective.analyze(url)', function () {
   describe('Intercom', function () {
     it('should detect script', function *() {
       var url = fixture('intercom/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Intercom': { appId: '<APP_ID>' } });
     });
@@ -138,7 +140,7 @@ describe('detective.analyze(url)', function () {
   describe('Keen IO', function () {
     it('should detect script', function *() {
       var url = fixture('keen-io/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, {
         'Keen IO': {
@@ -152,7 +154,7 @@ describe('detective.analyze(url)', function () {
   describe('KISSmetrics', function () {
     it('should detect script', function *() {
       var url = fixture('kissmetrics/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'KISSmetrics': { apiKey: '57a0897d0c675651f450229d65ccf4a605112804' } });
     });
@@ -161,7 +163,7 @@ describe('detective.analyze(url)', function () {
   describe('Mixpanel', function () {
     it('should detect script', function *() {
       var url = fixture('mixpanel/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, {
         'Mixpanel': {
@@ -178,7 +180,7 @@ describe('detective.analyze(url)', function () {
   describe('Olark', function () {
     it('should detect script', function *() {
       var url = fixture('olark/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Olark': { siteId: '6185-174-10-1457' } });
     });
@@ -187,7 +189,7 @@ describe('detective.analyze(url)', function () {
   describe('Optimizely', function () {
     it('should detect script', function *() {
       var url = fixture('optimizely/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, {
         'Optimizely': {
@@ -201,7 +203,7 @@ describe('detective.analyze(url)', function () {
   describe('Quantcast', function () {
     it('should detect script', function *() {
       var url = fixture('quantcast/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Quantcast': { pCode: 'p-test123' } });
     });
@@ -210,7 +212,7 @@ describe('detective.analyze(url)', function () {
   describe('Totango', function () {
     it('should detect script', function *() {
       var url = fixture('totango/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Totango': { serviceId: 'SP-0000-00' } });
     });
@@ -219,7 +221,7 @@ describe('detective.analyze(url)', function () {
   describe('Track JS', function () {
     it('should detect script', function *() {
       var url = fixture('trackjs/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, { 'Track JS': { token: 'YOUR_TOKEN' } });
     });
@@ -228,7 +230,7 @@ describe('detective.analyze(url)', function () {
   describe('Woopra', function () {
     it('should detect script', function *() {
       var url = fixture('woopra/index.html');
-      var results = yield detective.analyze(url);
+      var results = yield sherlock.analyze(url);
 
       assert.deepEqual(results, {
         'Woopra': {
