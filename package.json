@@ -4,7 +4,7 @@
   "repository": "git://github.com/segmentio/sherlock.git",
   "version": "0.0.0",
   "license": "MIT",
-  "main": "lib/sherlock.js",
+  "main": "lib/index.js",
   "dependencies": {
     "each-module": "^1.0.0",
     "for-each": "^0.3.2",
