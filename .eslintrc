@@ -1,7 +1,4 @@
 {
-  "ecmaFeatures": {
-    "generators": true
-  },
   "env": {
     "browser": true,
     "node": true
