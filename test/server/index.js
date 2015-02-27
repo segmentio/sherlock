@@ -3,18 +3,12 @@
  * Module dependencies.
  */
 
-var serve = require('koa-static');
-var path = require('path');
-var koa = require('koa');
+var resolve = require('path').resolve;
+var serve = require('serve-static');
+var http = require('http');
 
 /**
- * Locals.
+ * Export a vanilla server that serves the fixtures dir statically.
  */
 
-var app = module.exports = koa();
-
-/**
- * Middleware.
- */
-
-app.use(serve(path.resolve(__dirname, '../fixtures')));
+module.exports = http.createServer(serve(resolve(__dirname, '../fixtures')));
