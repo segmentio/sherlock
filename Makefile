@@ -3,14 +3,14 @@
 # Environment.
 #
 
-NODE ?= node --harmony-generators
+NODE ?= node
 
 #
 # Binaries.
 #
 
 BIN := ./node_modules/.bin
-MOCHA := $(BIN)/mocha --harmony-generators
+MOCHA := $(BIN)/mocha
 ESLINT := $(BIN)/eslint
 
 #
@@ -18,7 +18,7 @@ ESLINT := $(BIN)/eslint
 #
 
 test: | node_modules
-	@$(MOCHA)
+	@$(MOCHA) test/integrations.js test/index.js
 
 #
 # Lint.
