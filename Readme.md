@@ -2,28 +2,30 @@
 
 # Sherlock
 
-Detect which integrations a website is using and find their API keys.
+> Detect which integrations a website is using and find their API keys.
 
 ## Example
 
 ```js
 var sherlock = require('sherlock');
-var thunkify = require('thunkify');
-sherlock.analyze = thunkify(sherlock.analyze.bind(sherlock));
-var results = sherlock.analyze('segment.com');
+
+sherlock.analyze('segment.com', function (err, results) {
+  // ...
+});
 ```
 
-## Develop
+## Notes
 
-```js
-  $ git clone segmentio/sherlock && cd sherlock
-  $ make server
+You will **need** to install [PhantomJS](http://phantomjs.org/) separately.
+
+If you're using Homebrew, you can do this with the following command:
+
+```sh
+$ sudo brew update && brew install phantomjs
 ```
 
-## Note
+You can also use npm:
 
-You will **need** to install PhantomJS separately. If you're using Homebrew, you can do this with the following command:
-
-```js
-  $ sudo brew update && brew install phantomjs
+```sh
+$ sudo npm -g install phantomjs
 ```
