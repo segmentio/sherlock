@@ -4,7 +4,7 @@
   "repository": "git://github.com/segmentio/sherlock.git",
   "version": "0.0.1",
   "license": "MIT",
-  "main": "lib/detective.js",
+  "main": "lib/sherlock.js",
   "dependencies": {
     "each-module": "^1.0.0",
     "nightmare": "^1.7.0",
