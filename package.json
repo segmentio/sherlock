@@ -1,5 +1,5 @@
 {
-  "name": "sherlock",
+  "name": "s-sherlock",
   "description": "Detect which integrations a website is using and find their API keys.",
   "repository": "git://github.com/segmentio/sherlock.git",
   "version": "0.0.1",
@@ -20,5 +20,8 @@
     "mocha": "^2.1.0",
     "supertest": "^0.15.0",
     "thunkify": "^2.1.2"
+  },
+  "publishConfig": {
+    "registry": "https://segmentio.registry.nodejitsu.com"
   }
 }
