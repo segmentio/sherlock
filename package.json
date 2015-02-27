@@ -1,20 +1,12 @@
 {
-  "name": "analytics-detective",
+  "name": "sherlock",
   "description": "Detect which integrations a website is using and find their API keys.",
-  "repository": "git://github.com/segmentio/analytics-detective.git",
+  "repository": "git://github.com/segmentio/sherlock.git",
   "version": "0.0.1",
   "license": "MIT",
-  "main": "server/index.js",
+  "main": "lib/detective.js",
   "dependencies": {
-    "commander": "^2.6.0",
     "each-module": "^1.0.0",
-    "for-each": "^0.3.2",
-    "koa": "^0.17.0",
-    "koa-cors": "0.0.14",
-    "koa-favicon": "^1.2.0",
-    "koa-json": "^1.1.1",
-    "koa-logger": "^1.2.2",
-    "koa-static": "^1.4.9",
     "nightmare": "^1.7.0",
     "normalize-url": "^1.0.2",
     "thunkify": "^2.1.2"

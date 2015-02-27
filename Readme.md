@@ -1,23 +1,22 @@
-[![Build Status](https://circleci.com/gh/segmentio/analytics-detective.png?circle-token=549661cd6c45d67690129d9737a0402f31cb1657)](https://circleci.com/gh/segmentio/analytics-detective)
+[![Build Status](https://circleci.com/gh/segmentio/sherlock.png?circle-token=549661cd6c45d67690129d9737a0402f31cb1657)](https://circleci.com/gh/segmentio/sherlock)
 
-# analytics-detective
+# Sherlock
 
 Detect which integrations a website is using and find their API keys.
 
-## Demo
+## Example
 
-![](http://cl.ly/image/2c3F1d153S0z/Screen%20Shot%202015-02-15%20at%2010.02.05%20PM.png)
-
-## API
-
-**GET** /?url=url
-
-Get all integrations at url
+```js
+var sherlock = require('sherlock');
+var thunkify = require('thunkify');
+sherlock.analyze = thunkify(sherlock.analyze.bind(sherlock));
+var results = sherlock.analyze('segment.com');
+```
 
 ## Develop
 
 ```js
-  $ git clone segmentio/analytics-detective && cd analytics-detective
+  $ git clone segmentio/sherlock && cd sherlock
   $ make server
 ```
 
