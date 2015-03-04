@@ -1,6 +1,6 @@
-[![Build Status](https://circleci.com/gh/segmentio/sherlock.png?circle-token=549661cd6c45d67690129d9737a0402f31cb1657)](https://circleci.com/gh/segmentio/sherlock)
-
 # Sherlock
+
+[![Circle CI](https://circleci.com/gh/segmentio/sherlock.svg?style=svg&circle-token=549661cd6c45d67690129d9737a0402f31cb1657)](https://circleci.com/gh/segmentio/sherlock)
 
 > Detect which integrations a website is using and find their API keys.
 
