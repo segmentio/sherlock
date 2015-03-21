@@ -7,11 +7,19 @@
 ## Example
 
 ```js
-var sherlock = require('sherlock');
+var Sherlock = require('sherlock');
 
-sherlock.analyze('segment.com', function (err, results) {
-  // ...
-});
+var customTracker = {
+  name: 'myTracker',
+  pattern: /http(s)?:\/\/(.)\.myTracker\.com/,
+  settings: function(){ return { id: window.myTracker.id } }
+};
+
+new Sherlock()
+  .use(customTracker)
+  .analyze('segment.com', function(err, results){
+    console.log(results);
+  });
 ```
 
 ## Notes
