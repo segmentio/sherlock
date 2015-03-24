@@ -7,7 +7,7 @@
 ## Example
 
 ```js
-var sherlock = require('sherlock');
+var sherlock = require('sherlock-inspector');
 
 var myTracker = {
   name: 'myTracker',
