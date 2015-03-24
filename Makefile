@@ -18,7 +18,7 @@ ESLINT := $(BIN)/eslint
 #
 
 test: | node_modules
-	@$(MOCHA) test/integrations.js test/index.js
+	@$(MOCHA)
 
 #
 # Lint.
