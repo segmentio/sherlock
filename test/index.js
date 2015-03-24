@@ -1,6 +1,8 @@
 
 var assert = require('assert');
+var server = require('./server');
 var Sherlock = require('..');
+var url = require('url');
 
 describe('Sherlock()', function () {
   it('should be a function', function () {
@@ -41,5 +43,94 @@ describe('Sherlock#use(plugin)', function () {
 });
 
 describe('Sherlock#analyze(url)', function () {
+  before(function (done) {
+    server.listen(7500, done);
+  });
 
+  describe('service.name', function () {
+    it('should use the name on the results object', function (done) {
+      Sherlock()
+        .use({
+          name: 'example',
+          script: 'http://www.example.com/'
+        })
+        .analyze(fixture('example'), function (err, results) {
+          if (err) return done(err);
+          assert('example' in results);
+          done();
+        });
+    });
+  });
+
+  describe('service.script', function () {
+    it('should detect our custom tracker with a string', function (done) {
+      Sherlock()
+        .use({
+          name: 'example',
+          script: 'http://www.example.com/'
+        })
+        .analyze(fixture('example'), function (err, results) {
+          if (err) return done(err);
+          assert.deepEqual(results, { example: true });
+          done();
+        });
+    });
+
+    it('should detect our custom tracker with a regex', function (done) {
+      Sherlock()
+        .use({
+          name: 'example',
+          script: /example\.com/
+        })
+        .analyze(fixture('example'), function (err, results) {
+          if (err) return done(err);
+          assert.deepEqual(results, { example: true });
+          done();
+        });
+    });
+
+    it('should detect our custom tracker with a function', function (done) {
+      Sherlock()
+        .use({
+          name: 'example',
+          script: function (src) {
+            return src.indexOf('example.com') > -1;
+          }
+        })
+        .analyze(fixture('example'), function (err, results) {
+          if (err) return done(err);
+          assert.deepEqual(results, { example: true });
+          done();
+        });
+    });
+  });
+
+  describe('service.settings', function () {
+    it('should extract the settings from the page', function (done) {
+      Sherlock()
+        .use({
+          name: 'example',
+          script: 'http://www.example.com/',
+          settings: function () {
+            return window.example.id;
+          }
+        })
+        .analyze(fixture('example'), function (err, results) {
+          if (err) return done(err);
+          assert.deepEqual(results, { example: 'abc123' });
+          done();
+        });
+    });
+  });
 });
+
+/**
+ * Generate a fixture URL.
+ *
+ * @param {String} name
+ * @returns {String}
+ */
+
+function fixture(name) {
+  return url.resolve('http://localhost:7500/', name);
+}
