@@ -7,8 +7,6 @@
   "main": "lib/index.js",
   "dependencies": {
     "debug": "^2.1.1",
-    "each-module": "^1.0.0",
-    "for-each": "^0.3.2",
     "nightmare": "^1.7.0",
     "normalize-url": "^1.0.2"
   },

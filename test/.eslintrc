@@ -4,6 +4,7 @@
   },
   "rules": {
     "camelcase": 0,
-    "dot-notation": [ 2, { "allowPattern": "^[A-Z]" } ]
+    "dot-notation": [ 2, { "allowPattern": "^[A-Z]" } ],
+    "new-cap": 0
   }
 }
