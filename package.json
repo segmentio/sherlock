@@ -1,5 +1,5 @@
 {
-  "name": "sherlock",
+  "name": "sherlock-inspector",
   "description": "Detect which integrations a website is using and find their API keys.",
   "repository": "git://github.com/segmentio/sherlock.git",
   "version": "0.1.0",
