@@ -14,5 +14,8 @@
     "eslint": "^0.17.1",
     "mocha": "^2.2.1",
     "serve-static": "^1.9.2"
+  },
+  "publishConfig": {
+    "registry": "http://registry.npmjs.org/"
   }
 }
