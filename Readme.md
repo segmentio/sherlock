@@ -3,12 +3,18 @@
 # Sherlock
 
 > Used to scrape a web page to detect what 3rd-party services are being used.
+> Check out [sherlock-segment](https://github.com/segmentio/sherlock-segment)
+> for a collection of plugin examples.
 
 ## Example
 
 ```js
 var sherlock = require('sherlock-inspector');
 
+// add plugins to support various services
+var segment = require('sherlock-segment');
+
+// even custom ones you define yourself!
 var myTracker = {
   name: 'myTracker',
   script: /http(s)?:\/\/(.)\.myTracker\.com/,
@@ -18,6 +24,7 @@ var myTracker = {
 };
 
 sherlock()
+  .use(segment)
   .use(myTracker)
   .analyze('segment.com', function (err, results) {
     console.log(results); // { id: 'abc123' }
