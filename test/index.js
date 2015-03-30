@@ -62,6 +62,22 @@ describe('Sherlock#analyze(url)', function () {
     });
   });
 
+  describe('service.categories', function () {
+    it('should use the categories in the name on the results object', function (done) {
+      Sherlock()
+        .use({
+          name: 'example',
+          categories: ['example'],
+          script: 'http://www.example.com/'
+        })
+        .analyze(fixture('example'), function (err, results) {
+          if (err) return done(err);
+          assert(results['example'].categories);
+          done();
+        });
+    });
+  });
+
   describe('service.script', function () {
     it('should detect our custom tracker with a string', function (done) {
       Sherlock()
