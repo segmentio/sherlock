@@ -38,9 +38,9 @@ Sherlock performs the following steps during it's analysis:
 
  1. Opens a `url` using [Nightmare](http://www.nightmarejs.org/)
  2. Iterates through configured services looking for `<script>` tags matching
-    the `service.script` option.
+    the `service.script` option
  3. For each service found, the `service.settings` function is invoked on the
-    page to extract the service's configuration. (such as an API key)
+    page to extract the service's configuration (such as an API key)
 
 
 ## API
@@ -69,7 +69,8 @@ Sherlock is meant to scrape a web page and detect the services it is using. By
 using a plugin architecture, this allows developers to publish their own lists
 of services. (without requiring internal tight-coupling)
 
-Each plugin/service is a single object with the following available options:
+A plugin simply exports an array of objects. Each object configures a single
+service, and supports the following properties:
 
 ### name
 
@@ -96,6 +97,19 @@ If the function throws an error or returns a falsy value, retry up to 5 times
 in 500ms intervals.
 
 When excluded, the results object will be populated with `true` by default.
+
+
+## Publishing a Plugin
+
+When publishing your plugin, use the following conventions in your
+`package.json` to make it easy for others to find:
+
+ * `name` use "sherlock-" as a prefix
+ * `keywords` should include "sherlock"
+
+Once it is published, we can list it right here:
+
+ * [Segment](http://github.com/segmentio/sherlock-segment)
 
 
 ## PhantomJS

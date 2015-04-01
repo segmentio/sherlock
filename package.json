@@ -1,6 +1,13 @@
 {
   "name": "sherlock-inspector",
-  "description": "Detect which integrations a website is using and find their API keys.",
+  "description": "Detect which services a website is using and find their API keys.",
+  "keywords": [
+    "sherlock",
+    "inspector",
+    "detect",
+    "services",
+    "plugins"
+  ],
   "repository": "git://github.com/segmentio/sherlock.git",
   "version": "0.1.2",
   "license": "MIT",
