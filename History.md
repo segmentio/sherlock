@@ -1,4 +1,10 @@
 
+0.1.3 / 2015-04-01
+==================
+
+  * update readme and manifest
+  * updating readme to point to sherlock-segment
+
 0.1.2 / 2015-03-25
 ==================
 
