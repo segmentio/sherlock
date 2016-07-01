@@ -116,14 +116,9 @@ Once it is published, we can list it right here:
 
 You will **need** to install [PhantomJS](http://phantomjs.org/) separately.
 
-If you're using Homebrew, you can do this with the following command:
+**NOTE:** You will currently need to rely on PhantomJS v1, as v2 is unsupported.
+(see #23)
 
 ```sh
-$ brew install phantomjs
-```
-
-You can also use npm:
-
-```sh
-$ sudo npm -g install phantomjs
+$ sudo npm -g install phantomjs@1
 ```
